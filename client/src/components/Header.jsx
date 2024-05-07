@@ -28,7 +28,7 @@ const Header = () => {
         <div className="d-flex">
           <div className="offset-sm-2 col-sm-3 col-lg-3">
             <Link
-              to="signin"
+              to="/signin"
               className="text-decoration-none text-white"
               title="signin"
             >

@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { Link } from 'react-router-dom'
 const Login = () => {
   return (
     <>
@@ -23,6 +23,14 @@ const Login = () => {
           login
         </button>
       </div>
+      <div className="d-flex justify-content-between">
+        <Link to='/forgetpassword' className='text-decoration-none'>
+            Forget Password?
+        </Link>
+        <Link to='/signup' className='text-decoration-none'>
+            Create a New Account? 
+        </Link>
+      </div> 
     </form>
   </div>
 </div>
