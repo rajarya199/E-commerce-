@@ -4,7 +4,7 @@ require('dotenv').config()
 const morgan=require('morgan')
 require('./db/connection') 
 const bodyParser=require('body-parser')
-
+const userRoute=require('./routes/userRoute')
 const categoryRoute=require('./routes/categoryRoute')
 
 //middleware
@@ -13,6 +13,7 @@ app.use(bodyParser.json())
 
 //routes
 app.use('/api',categoryRoute)
+app.use('/api',userRoute)
 
 
 
