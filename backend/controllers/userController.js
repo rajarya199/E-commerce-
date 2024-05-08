@@ -2,6 +2,8 @@ const User = require("../models/userModel");
 const Token = require("../models/tokenModel");
 const crypto = require("crypto");
 const sendEmail = require("../utils/setEmail");
+const jwt=require('jsonwebtoken') //authentication
+
 //register user
 exports.postUser = async (req, res) => {
   let user = new User({
@@ -92,3 +94,34 @@ exports.postEmailConfirmation = (req, res) => {
   return res.status(400).json({ error: err });
 });
 };
+
+//signin 
+exports.signIn=async(req,res)=>{
+  const {email,password}=req.body 
+  //check email is register/not
+  const user = await User.findOne({ email });
+  if (!user) {
+    return res
+      .status(503)
+      .json({
+        error:
+          "sorry,the email you provided is not found in our system ,register first and try again" });
+  }
+  //if email found check password
+  if(!user.authenticate(password)){
+    return res.status(400).json({ error: "email and password doesnot match" });
+  }  
+  //check if user is verified or not
+  if (!user.isVerified) {
+    return res.status(400).json({ error: "verify email first to continue" });
+  }
+  //generate token with user id and jwt secret
+  const token=jwt.sign({_id:user._id},process.env.JWT_SECRET)
+    //store token in the cookie
+    res.cookie("mycookie", token, { expire: Date.now()+ 99999 });
+     //return user information to frontend
+  const { _id, name, role } = user;
+  return res.json({ token, user: { name, role, email, _id } });
+  //to acess name--> .user.name
+  
+}
