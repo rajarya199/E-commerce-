@@ -1,6 +1,6 @@
 const nodemailer=require('nodemailer')
 
-const sentEmail=options=>{
+const sendEmail=options=>{
 
     const transport = nodemailer.createTransport({
         host:process.env.SMTP_HOST,
@@ -19,4 +19,4 @@ const sentEmail=options=>{
       }
       transport.sendMail(mailOptions)
 }
-module.exports=sentEmail
+module.exports=sendEmail

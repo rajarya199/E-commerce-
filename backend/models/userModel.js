@@ -1,5 +1,5 @@
 const mongoose=require('mongoose')
-const uuidv1=require("uuidv1") //generrate random string
+const uuidv1=require('uuidv1') //generrate random string
 const crypto=require('crypto') //hasing
 
 const userSchema= new mongoose.Schema({
