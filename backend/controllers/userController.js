@@ -159,3 +159,32 @@ exports.forgetpassword = async (req, res) => {
   });
   res.json({ messsage: "password reset has beeen sent successfully" });
 };
+
+//
+// reset  password
+exports.resetPassword = async(req, res) => {
+  //find the valid token
+  let token= await Token.findOne({token:req.params.token})
+
+  if (!token) {
+    return res
+      .status(400)
+      .json({ error: "invalid token or token may have expired" });
+  }
+  //if we found the valid token then find the valid user for that token
+  let user = await User.findOne({ _id: token.userId });
+  if (!user) {
+    return res
+      .status(400)
+      .json({ error: "we are unable to find valid user for this token" });
+  }
+  //reset the password
+  user.password = req.body.password;
+  user = await user.save();
+  if (!user) {
+    return res.status(500).json({ error: "failed to reset password" });
+  }
+  res.json({
+    message: "password has been reset successfully ,login to continue",
+  });
+};
