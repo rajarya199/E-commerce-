@@ -5,6 +5,7 @@ import Homepage from './pages/Homepage';
 import Register from './pages/Register';
 import Login from './pages/Login';
 import Cart from './pages/Cart';
+import EmailVerify from './auth/EmailVerify';
 import ForgetPassword from './pages/ForgetPassword';
 import Products from './pages/Products';
 const MyRoute = () => {
@@ -19,6 +20,8 @@ const MyRoute = () => {
       <Route path='cart' element={<Cart/>}/>
       <Route path='forgetpassword' element={<ForgetPassword/>}/>
       <Route path="products" element={<Products/>}/>
+      <Route path="email/confirmation/:token" element={<EmailVerify />} />
+
       </Route>
     </Routes>
     

@@ -33,6 +33,8 @@ exports.postUser = async (req, res) => {
         return res.status(400).json({ error: "failed to create a token" });
       }
       //send email
+      const url=process.env.FRONTEND_URL+'\/email\/confirmation\/'+token.token
+      //http:localhost:5137/email/confirmation/6y62
       sendEmail({
         from: "no-reply@ecommerce.com",
         to: user.email,
@@ -40,6 +42,12 @@ exports.postUser = async (req, res) => {
         text: `hello,\n\n please verify your email by click in the below link:\n\n,
           http:\/\/${req.headers.host}\/api\/confirmation\/${token.token}`,
         //http:localhost:8000/api/confirmation/3457777
+        html:`
+        <h3> Hello User,</h3> <br/>
+        <h3> Thank for joining </h3> 
+        <h1> To finished Registration ,Verify Your Email Account</h1>
+        <button >  <a href=${url}> Click to verify </a> </button>
+        `
       })
 
       res.send(user);
