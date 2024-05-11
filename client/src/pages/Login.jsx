@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link,useNavigate,Navigate } from 'react-router-dom'
+import { Link,useNavigate } from 'react-router-dom'
 import { signin,isAuthenticated,authenticate } from '../auth'
 const Login = () => {
   const navigate=useNavigate()
@@ -41,19 +41,18 @@ const showError=()=>(
   {error}
  </div>
 )
-
-// to redirect user
 const redirectUser=()=>{
-if(redirectToPage){
-  if(user && user.role===1){
-    return navigate('/admin/dashboard')
+  if(redirectToPage){
+      if (user && user.role==1){
+          return navigate('/admin/dashboard')
+      }
+      else{
+          return  navigate('/profile')
+      }
   }
-  else{
-    return navigate('/profile')
-  }
+}
 
-}
-}
+
   return (
     <>
         <div className="d-flex justify-content-center">
