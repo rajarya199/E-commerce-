@@ -31,3 +31,22 @@ export const signin=user=>{
     })
     .catch(err=> console.log(err))
 }
+//authenticate -store user info,token accodingly
+export const authenticate=(data,next)=>{
+    if(typeof window !== 'undefined'){
+        localStorage.setItem('jwt',JSON.stringify(data))
+        next()
+
+    }
+}
+// redirect user by role if authenticated
+export const isAuthenticated=()=>{
+    if(localStorage.getItem('jwt')){
+        return JSON.parse(localStorage.getItem('jwt'))
+    }
+    else{
+        return false
+    }
+}
+
+//

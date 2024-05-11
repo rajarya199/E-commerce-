@@ -64,6 +64,7 @@ const Register = () => {
          New account created, verify your account before login
       </div>
   )
+  
 
 return (
   <>

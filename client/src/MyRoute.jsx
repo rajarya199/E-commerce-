@@ -8,6 +8,8 @@ import Cart from './pages/Cart';
 import EmailVerify from './auth/EmailVerify';
 import ForgetPassword from './pages/ForgetPassword';
 import Products from './pages/Products';
+import NotFound from './pages/NotFound';
+
 const MyRoute = () => {
   return (
     <Router>
@@ -20,9 +22,9 @@ const MyRoute = () => {
       <Route path='cart' element={<Cart/>}/>
       <Route path='forgetpassword' element={<ForgetPassword/>}/>
       <Route path="products" element={<Products/>}/>
-      <Route path="email/confirmation/:token" element={<EmailVerify />} />
-
+      <Route path="email/confirmation/:token" element={<EmailVerify />} /> 
       </Route>
+      <Route path='/*' element={<NotFound/>}/>
     </Routes>
     
     </Router>
