@@ -1,6 +1,8 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link,useNavigate } from 'react-router-dom'
+import { isAuthenticated,signout } from '../auth'
 const Header = () => {
+  const navigate=useNavigate()
   return (
     <>
     <>
@@ -26,16 +28,38 @@ const Header = () => {
       </div>
       <div className="col-lg-3">
         <div className="d-flex">
-          <div className="offset-sm-2 col-sm-3 col-lg-3">
-            <Link
+          <div className="offset-sm-2 col-sm-3 col-lg-3 mt-3">
+           {isAuthenticated() && isAuthenticated().user.role===1 &&
+             <Link
+             to="/admin/dashboard"
+             className="text-decoration-none text-white"
+             title="signin"
+           >Admin
+           </Link>
+           }
+             {isAuthenticated() && isAuthenticated().user.role===0 &&
+             <Link
+             to="/profile"
+             className="text-decoration-none text-white"
+             title="signin"
+           >Profile
+           </Link>
+           }
+           </div>
+
+           {!isAuthenticated()&&
+           <>
+                   <div className="offset-sm-2 col-sm-3 col-lg-3">
+                <Link
               to="/signin"
               className="text-decoration-none text-white"
               title="signin"
             >
               <i className="fas fa-sign-in-alt fs-3 my-3" />
             </Link>
-          </div>
-          <div className="col-sm-3 col-lg-3">
+
+                </div>
+            <div className="col-sm-3 col-lg-3">
             <div className="col-lg-4">
               <Link
                 to="/signup"
@@ -46,6 +70,20 @@ const Header = () => {
               </Link>
             </div>
           </div>
+           </>
+           }
+        {isAuthenticated() && 
+          <div className="col-sm-3 col-lg-3">
+          <div className="col-lg-4">
+          <button className='btn btn-danger mt-2 me-2 '
+                onClick={()=>signout(()=>{
+                  navigate('/signin')
+                    })}
+              >Logout</button>
+          </div>
+        </div>}
+          
+        
           <div className="col-sm-3 col-lg-3">
             <div className="col-lg-4">
               <Link
@@ -53,7 +91,7 @@ const Header = () => {
                 className="text-decoration-none text-white"
                 title="cart"
               >
-                <i className="fas fa-cart-plus fs-3 my-3 position-relative">
+                <i className="fas fa-cart-plus fs-3 my-3 mx-3 position-relative">
                   <span
                     className="position-absolute top-0 start-100 bg-warning badge rounded-pill translate-middle text-dark"
                     style={{ fontSize: 12 }}
@@ -66,6 +104,7 @@ const Header = () => {
           </div>
         </div>
       </div>
+      
     </div>
   </div>
   <nav className="navbar navbar-expand-lg navbar-light bg-secondary custom-nav">
