@@ -6,6 +6,7 @@ require('./db/connection')
 const bodyParser=require('body-parser')
 const userRoute=require('./routes/userRoute')
 const categoryRoute=require('./routes/categoryRoute')
+const productRoute=require('./routes/productRoute')
 const cors=require('cors')
 //middleware
 app.use(morgan('dev'))
@@ -15,6 +16,7 @@ app.use(cors())
 //routes
 app.use('/api',categoryRoute)
 app.use('/api',userRoute)
+app.use('/api',productRoute)
 
 
 
