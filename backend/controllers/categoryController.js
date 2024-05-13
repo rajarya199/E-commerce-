@@ -4,25 +4,27 @@ const Category=require('../models/categoryModel')
 exports.postCategory=async(req,res)=>{
     let category= new Category({
         category_name:req.body.category_name
-
+        //model-key:req.body.db-key
     })
-     //to check if category already exist in db
-     Category.findOne({category_name:category.category_name})
-     .then(async categories=>{
-         if(categories){
-             return res.status(400).json({error:'category must be unique'})
-         }
-         else{
-             category= await category.save()
-             //if not save
-             if(!category){
-                 return res.status(400).json({error:'something went wrong'})
-             }
-             res.send(category)
-         }
-     })
-     .catch(err=>res.status(400).json({error:err}))
+    //to check if category already exist in db
+    Category.findOne({category_name:category.category_name})
+    .then(async categories=>{
+        if(categories){
+            return res.status(400).json({error:'category must be unique'})
+        }
+        else{
+            category= await category.save()
+            //if not save
+            if(!category){
+                return res.status(400).json({error:'something went wrong'})
+            }
+            res.send(category)
+        }
+    })
+    .catch(err=>res.status(400).json({error:err}))
+   
 }
+
 // to retrive all data
 exports.categoryList=async(req,res)=>{
     const category= await Category.find()

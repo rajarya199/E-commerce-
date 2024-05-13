@@ -13,6 +13,7 @@ import AdminRoute from './auth/AdminRoute';
 import Dashboard from './admin/Dashboard';
 import ClientRoute from './auth/ClientRoute';
 import Profile from './pages/Profile';
+import AddCategory from './admin/AddCategory';
 
 const MyRoute = () => {
   return (
@@ -36,8 +37,9 @@ const MyRoute = () => {
       </Route>
 
       {/* admin */}
-      <Route path='/admin/' element={<AdminRoute/>}>
+      <Route path='admin/' element={<AdminRoute/>}>
         <Route path='dashboard' element={<Dashboard/>}/>
+        <Route path='addcategory' element={<AddCategory/>}/>
       </Route>
 
       <Route path='/*' element={<NotFound/>}/>

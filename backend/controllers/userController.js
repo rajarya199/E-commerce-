@@ -125,7 +125,7 @@ exports.signIn=async(req,res)=>{
     return res.status(400).json({ error: "verify email first to continue" });
   }
   //generate token with user id and jwt secret
-  const token=jwt.sign({_id:user._id},process.env.JWT_SECRET)
+  const token=jwt.sign({_id:user._id,role:user.role},process.env.JWT_SECRET)
     //store token in the cookie
     res.cookie("mycookie", token, { expire: Date.now()+ 99999 });
      //return user information to frontend
@@ -232,7 +232,8 @@ exports.signOut=(req,res)=>{
 
 exports.requireSignin=expressjwt({
   secret:process.env.Jwt_SECRET,
-  algorithms:['HS256']
+  algorithms:['HS256'],
+  userProperty:'auth'
 })
 
 //middleware for user role
@@ -240,13 +241,14 @@ exports.requireUser=(req,res,next)=>{
   //verify jwt
    expressjwt({
     secret:process.env.Jwt_SECRET,
-  algorithms:['HS256']
+  algorithms:['HS256'],
+  userProperty:'auth'
    })(req,res,(err)=>{
     if(err){
       return res.status(400).json({error:'Unauthorized'})
     }
     //check the role
-    if(req.user.role===0){
+    if(req.auth.role===0){
       //grant access
       next()
     } else{
@@ -261,13 +263,14 @@ exports.requireAdmin=(req,res,next)=>{
   //verify jwt
    expressjwt({
     secret:process.env.Jwt_SECRET,
-  algorithms:['HS256']
+  algorithms:['HS256'],
+  userProperty:'auth'
    })(req,res,(err)=>{
     if(err){
       return res.status(400).json({error:'Unauthorized'})
     }
     //check the role
-    if(req.user.role===1){
+    if(req.auth.role===1){
       //grant access
       next()
     } else{
