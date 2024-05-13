@@ -1,10 +1,11 @@
 const express=require('express')
 const { postCategory, categoryList, categoryDetails, updateCategory, deleteCategory } = require('../controllers/categoryController')
 const router=express.Router()
-
-router.post('/postcategory',postCategory)
+const {categoryValidation,validation}=require('../validation/validator')
+const { requireSignin, requireAdmin } = require('../controllers/userController')
+router.post('/postcategory',requireSignin,requireAdmin,categoryValidation,validation,postCategory)
 router.get('/categorylist',categoryList)
 router.get('/categorydetails/:id',categoryDetails)
-router.put('/updatecategory/:id',updateCategory)
-router.delete('/deletecategory/:id',deleteCategory)
+router.put('/updatecategory/:id',requireSignin,requireAdmin,categoryValidation,validation,updateCategory)
+router.delete('/deletecategory/:id',requireSignin,requireAdmin,deleteCategory)
 module.exports=router
