@@ -14,6 +14,7 @@ import Dashboard from './admin/Dashboard';
 import ClientRoute from './auth/ClientRoute';
 import Profile from './pages/Profile';
 import AddCategory from './admin/AddCategory';
+import Category from './admin/Category';
 
 const MyRoute = () => {
   return (
@@ -40,6 +41,7 @@ const MyRoute = () => {
       <Route path='admin/' element={<AdminRoute/>}>
         <Route path='dashboard' element={<Dashboard/>}/>
         <Route path='addcategory' element={<AddCategory/>}/>
+        <Route path='category' element={<Category/>}/>
       </Route>
 
       <Route path='/*' element={<NotFound/>}/>
