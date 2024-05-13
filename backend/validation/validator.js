@@ -1,5 +1,10 @@
 const{check,validationResult} =require('express-validator')
 
+exports.categoryValidation=[
+    check('category_name','category name is required').notEmpty()
+    .isLength({min:3}).withMessage('category must be of at least 3 character')
+
+]
 exports.userValidation=[
     check('name',"name is required ").notEmpty()
     .isLength({min:3})
