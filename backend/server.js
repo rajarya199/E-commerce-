@@ -12,6 +12,7 @@ const cors=require('cors')
 app.use(morgan('dev'))
 app.use(bodyParser.json())
 app.use(cors())
+app.use('/public/uploads',express.static('public/uploads'))
 
 //routes
 app.use('/api',categoryRoute)
