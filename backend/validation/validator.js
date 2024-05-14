@@ -21,6 +21,19 @@ exports.passwordValidation=[
     .matches(/[@#$_?!]/).withMessage('passord must contain at least one special character')
     .isLength({min:8}).withMessage('password must be minium of 8 character')
 ]
+
+exports.productValidation=[
+    check('product_name','product name is required').notEmpty()
+    .isLength({min:3}).withMessage('product name be of  3 character'),
+    check('product_price','price is required').notEmpty()
+    .isNumeric().withMessage('numerical value is required'),
+    check('countInStock','stock is required').notEmpty()
+    .isNumeric().withMessage('numerical value is required'),
+    check('product_description','description is required').notEmpty()
+    .isLength({min:20}).withMessage('description must be of at least 20 character '),
+    check('category','category is required').notEmpty()
+    
+]
 //next middleware -if correct then push to next,coming fn 
 exports.validation=(req,res,next)=>{
     const errors=validationResult(req)
