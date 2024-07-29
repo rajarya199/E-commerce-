@@ -15,6 +15,7 @@ import ClientRoute from './auth/ClientRoute';
 import Profile from './pages/Profile';
 import AddCategory from './admin/AddCategory';
 import Category from './admin/Category';
+import AddProduct from './admin/AddProduct'
 
 const MyRoute = () => {
   return (
@@ -42,6 +43,7 @@ const MyRoute = () => {
         <Route path='dashboard' element={<Dashboard/>}/>
         <Route path='addcategory' element={<AddCategory/>}/>
         <Route path='category' element={<Category/>}/>
+        <Route path='addproduct' element={<AddProduct/>}/>
       </Route>
 
       <Route path='/*' element={<NotFound/>}/>
