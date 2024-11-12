@@ -16,6 +16,7 @@ import Profile from './pages/Profile';
 import AddCategory from './admin/AddCategory';
 import Category from './admin/Category';
 import AddProduct from './admin/AddProduct'
+import Product from './admin/Product';
 
 const MyRoute = () => {
   return (
@@ -44,6 +45,7 @@ const MyRoute = () => {
         <Route path='addcategory' element={<AddCategory/>}/>
         <Route path='category' element={<Category/>}/>
         <Route path='addproduct' element={<AddProduct/>}/>
+        <Route path='product' element={<Product/>}/>
       </Route>
 
       <Route path='/*' element={<NotFound/>}/>
