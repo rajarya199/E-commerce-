@@ -84,3 +84,18 @@ exports.updateStatus=async(req,res)=>{
     }
     res.send(order)
 }
+//order list of specific user
+exports.userOrders=async(req,res)=>{
+    const userOrderList=await OrderDelivery.find({user:req.params.user})
+    .populate({
+        path:'orderItems',populate:{
+            path:'product',populate:'category'
+        }
+    })
+        .sort({createdAt:-1})
+        if(!userOrderList){
+            return res.status(400).json({error:'something went wrong'})
+        }
+        res.send(this.userOrders)
+
+}
