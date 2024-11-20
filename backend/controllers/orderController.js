@@ -45,3 +45,30 @@ const orderItemIdsResolved=await orderItemsIds //above generated id is save in t
     res.send(order)
 }
 
+//order list
+exports.orderList=async(req,res)=>{
+    const order=await OrderDelivery.find()
+    .populate('user','name')
+    .sort({createdAt:-1})
+    if(!order){
+        return res.status(400).json({error:'something went wrong'})
+    }
+    res.send(order)
+}
+
+//order details
+exports.orderDetails=async(req,res)=>{
+    const order= await OrderDelivery.findById(req.params.id)
+    .populate('user','name')
+
+    //object ko orderitem ko id bata ref to orderitem model ,chose product from it then use id of product to ref Product model and show category from it
+    .populate({ 
+        path:'orderItems',populate:{
+            path:'product',populate:'category'
+        }
+    })
+    if(!order){
+        return res.status(400).json({error:'something went wrong'})
+    }
+    res.send(order)
+}
