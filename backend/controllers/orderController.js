@@ -72,3 +72,15 @@ exports.orderDetails=async(req,res)=>{
     }
     res.send(order)
 }
+//update status
+exports.updateStatus=async(req,res)=>{
+    const order=await OrderDelivery.findByIdAndUpdate(
+        req.params.id,
+        {status:req.body.status},
+        {new:true}
+    )
+    if(!order){
+        return res.status(400).json({error:'something went wrong'})
+    }
+    res.send(order)
+}
