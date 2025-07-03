@@ -18,6 +18,10 @@ import Category from './admin/Category';
 import AddProduct from './admin/AddProduct'
 import Product from './admin/Product';
 import ProductDetails from "./pages/ProductDetails";
+import Shipping from "./pages/Shipping";
+import ConfirmOrder from './pages/ConfirmOrder';
+import PaymentElement from './pages/PaymentElement';
+import Success from './pages/Success';
 
 const MyRoute = () => {
   return (
@@ -38,6 +42,13 @@ const MyRoute = () => {
       {/* user route */}
       <Route path='/' element={<ClientRoute/>}>
         <Route path='profile' element={<Profile/>}/>
+        <Route path='shipping' element={<Shipping/>}/>
+            <Route path='confirm' element={<ConfirmOrder/>}/>
+            <Route path='payment' element={<PaymentElement/>}/>
+            <Route path="/success" element={<Success/>} />
+
+
+
          
       </Route>
 
