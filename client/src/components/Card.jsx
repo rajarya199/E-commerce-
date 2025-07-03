@@ -1,98 +1,23 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+import { IMG_URL } from '../config'
+const Card = (props) => {
+const {_id,product_name,product_price,product_image}=props.data
 
-const Card = () => {
   return (
     <>
-    <div className="container-fluid mt-5">
-  <div className="row row-cols-1 row-cols-md-3 g-4">
     <div className="col">
-      <div className="card shadow-lg">
-        <img
-        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHL3mlsxTQoeOchsVxea6mG8fy9FSWZaqXZA&usqp=CAU"
-className="card-img-top"
-          alt="..."
-        />
+      <div className="card">
+        {/* src=localhost:8000/ product img url */}
+        <img src={`${IMG_URL}/${product_image}`}className="card-img-top" alt={product_name}/>
         <div className="card-body">
-          <h5 className="card-title">Card title</h5>
-          <h5 className="card-title">Price tag</h5>
-          <button className="btn btn-success">View Details </button>
+          <h5 className="card-title">{product_name}</h5>
+          <h5>Rs{product_price}</h5>
+          <Link to={`/productdetails/${_id}`} className='btn btn-success'>View Details</Link>
         </div>
       </div>
     </div>
-    <div className="col">
-      <div className="card shadow-lg">
-        <img
-          src="https://blog.bvblogic.com/wp-content/uploads/2020/02/shopping-apps.jpg"
-          className="card-img-top"
-          alt="..."
-        />
-        <div className="card-body">
-          <h5 className="card-title">Card title</h5>
-          <h5 className="card-title">Price tag</h5>
-          <button className="btn btn-success">View Details </button>
-        </div>
-      </div>
-    </div>
-    <div className="col">
-      <div className="card shadow-lg">
-        <img
-          src="https://cdn.acodez.in/wp-content/uploads/2018/04/E-commerce-Trends-to-Expect-in-the-Future.jpg"
-          className="card-img-top"
-          alt="..."
-        />
-        <div className="card-body">
-          <h5 className="card-title">Card title</h5>
-          <h5 className="card-title">Price tag</h5>
-          <button className="btn btn-success">View Details </button>
-        </div>
-      </div>
-    </div>
-    <div className="col">
-      <div className="card shadow-lg">
-        <img
-          src="https://cdn.acodez.in/wp-content/uploads/2018/04/future-and-Scope-of-ecommerce.jpg"
-          className="card-img-top"
-          alt="..."
-        />
-        <div className="card-body">
-          <h5 className="card-title">Card title</h5>
-          <h5 className="card-title">Price tag</h5>
-          <button className="btn btn-success">View Details </button>
-        </div>
-      </div>
-    </div>
-    <div className="col">
-      <div className="card shadow-lg">
-        <img
-          src="https://i.pinimg.com/originals/eb/09/85/eb098576a0c618c99ee86406a8815c64.png"
-          className="card-img-top"
-          alt="..."
-        />
-        <div className="card-body">
-          <h5 className="card-title">Card title</h5>
-          <h5 className="card-title">Price tag</h5>
-          <button className="btn btn-success">View Details </button>
-        </div>
-      </div>
-    </div>
-    <div className="col">
-      <div className="card shadow-lg">
-        <img
-          src="https://i.pinimg.com/originals/eb/09/85/eb098576a0c618c99ee86406a8815c64.png"
-          className="card-img-top"
-          alt="..."
-        />
-        <div className="card-body">
-          <h5 className="card-title">Card title</h5>
-          <h5 className="card-title">Price tag</h5>
-          <button className="btn btn-success">View Details </button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-
+    
     </>
   )
 }
