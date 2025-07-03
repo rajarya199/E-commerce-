@@ -109,32 +109,66 @@ const Payment = () => {
   return (
     <div>
          <ToastContainer theme='colored' />
-            <div className='container'>
-                <div className='row d-flex justify-content-center'>
-                    <div className='col-5 shadow p-3 my-4'>
-                        <form onSubmit={submitHandler}>
-                            <h2 className='mb-3'>Card Information</h2>
-                            <div className='mb-3'>
-                                <label htmlFor='card-number'>Card Number</label>
-                                <CardNumberElement type='text' className='form-control' id='card-number' options={options} />
-                            </div>
-                            <div className='mb-3'>
-                                <label htmlFor='card-expiry'>Card Expiry</label>
-                                <CardExpiryElement type='text' className='form-control' id='card-expiry' options={options} />
-                            </div>
-                            <div className='mb-3'>
-                                <label htmlFor='card-cvc'>Card CVC</label>
-                                <CardCvcElement type='text' className='form-control' id='card-cvc' options={options} />
-                            </div>
-                            <div className='mb-3'>
-                                <button className='btn btn-warning form-control' id='pay-btn'>
-                                    Pay Now
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
+          <div className="container mx-auto px-4">
+  <div className="flex justify-center">
+    <div className="w-full max-w-md shadow-lg p-6 my-10 rounded-lg bg-white">
+      <form onSubmit={submitHandler}>
+        <h2 className="mb-6 text-xl font-semibold">Card Information</h2>
+
+        {/* Card Number */}
+        <div className="mb-5">
+          <label htmlFor="card-number" className="block mb-2 font-medium text-gray-700">
+            Card Number
+          </label>
+          <CardNumberElement
+            type="text"
+            id="card-number"
+            options={options}
+            className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
+          />
+        </div>
+
+        {/* Card Expiry */}
+        <div className="mb-5">
+          <label htmlFor="card-expiry" className="block mb-2 font-medium text-gray-700">
+            Card Expiry
+          </label>
+          <CardExpiryElement
+            type="text"
+            id="card-expiry"
+            options={options}
+            className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
+          />
+        </div>
+
+        {/* Card CVC */}
+        <div className="mb-5">
+          <label htmlFor="card-cvc" className="block mb-2 font-medium text-gray-700">
+            Card CVC
+          </label>
+          <CardCvcElement
+            type="text"
+            id="card-cvc"
+            options={options}
+            className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
+          />
+        </div>
+
+        {/* Pay Now Button */}
+        <div className="mb-3">
+          <button
+            id="pay-btn"
+            type="submit"
+            className="w-full bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold py-3 rounded transition-colors duration-200"
+          >
+            Pay Now
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
     </div>
   )
 }
