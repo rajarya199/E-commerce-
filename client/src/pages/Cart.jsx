@@ -55,65 +55,113 @@ const Cart = () => {
   return (
         <>
             <ToastContainer theme='colored' position='top-center' />
-            <div className="container">
+           <div className="container mx-auto px-4">
+      <div className="flex flex-wrap justify-between my-20">
+        {products && products.length === 0 ? (
+          <h2 className="w-full text-center text-red-400 mt-3 text-2xl font-semibold">
+            Your Cart is Empty
+          </h2>
+        ) : (
+          <>
+            <h2 className="w-full text-center text-gray-200 mt-3 text-2xl font-semibold">
+              Your Cart Items
+            </h2>
 
-                <div className="row justify-content-between my-5">
-                    {products && products.length == 0 ?
-                        <h2 className="text-center text-danger mt-3">Your Cart is Empty</h2>
-                        : (
-                            <>
-                                <h2 className="text-center text-muted mt-3">Your Cart Items</h2>
-                                <div className="col-md-8 shadow-lg">
-                                    {products && products.map((item,i)=>(
-                                        <Fragment key={i}>
-                                    <hr />
-                                    <div className="d-flex  p-3 align-items-center">
-                                        <div className="col-3">
-                                            <img src={`${IMG_URL}/${item.image}`}
-                                                alt={item.name} className="img-fluid" width="150" />
-                                        </div>
-                                        <div className="col-3">
-                                            <span><b>{item.name}</b></span>
-                                        </div>
-                                        <div className="col-2">
-                                            <span className="text-warning">Rs.{item.price}</span>
-                                        </div>
-                                        <div className="col-3">
-                                            <div className="d-flex">
-                                                <button className="btn btn-danger" onClick={()=>decreaseQty(item.id)}>-</button> &nbsp;
-                                                <input type="number" name="qty" value={item.quantity} readonly className="form-control border-0" />
-                                                &nbsp;
-                                                <button className="btn btn-primary" onClick={()=>increaseQty(item.id)}>+</button> &nbsp;
-                                            </div>
+            {/* Cart Items List */}
+            <div className="w-full md:w-2/3 shadow-lg rounded-lg overflow-hidden mt-6 text-white">
+              {products &&
+                products.map((item, i) => (
+                  <Fragment key={i}>
+                    <hr className="border-gray-300" />
+                    <div className="flex items-center p-4 space-x-4">
+                      {/* Image */}
+                      <div className="w-1/4">
+                        <img
+                          src={`${IMG_URL}/${item.image}`}
+                          alt={item.name}
+                          className="w-full h-auto object-cover rounded"
+                          width={150}
+                        />
+                      </div>
 
-                                        </div>
-                                        <div className="col-1">
-                                            <button className="btn btn-danger" onClick={()=>removeCartHandler(item.id,item.name)}>
-                                                <i className="fa fa-trash"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <hr />
-                                           
-                                    </Fragment>
-                                    ))}
-                                </div>
-                                <div className="col-md-3">
-                                    <div className="shadow-lg p-2">
-                                        <h5>Cart Summary</h5>
-                                        <hr />
-                                        <span><b>Units:</b> {products.reduce((ac,item)=>(ac+Number(item.quantity)),0)}</span>
-                                        <br />
-                                        <span><b>Total:</b> Rs.{products.reduce((ac,item)=>(ac+item.quantity*item.price),0)}</span>
-                                        <hr />
-                                        <button className="btn btn-warning" onClick={shippingHandler} >CheckOut</button>
-                                    </div>
-                                </div>
-                            </>
-                        )
-                    }
-                </div>
+                      {/* Name */}
+                      <div className="w-1/4">
+                        <span className="font-bold text-lg">{item.name}</span>
+                      </div>
+
+                      {/* Price */}
+                      <div className="w-1/6">
+                        <span className="text-yellow-500 font-semibold text-lg">
+                          Rs.{item.price}
+                        </span>
+                      </div>
+
+                      {/* Quantity controls */}
+                      <div className="w-1/3">
+                        <div className="flex items-center space-x-3">
+                          <button
+                            className="bg-red-600 hover:bg-red-700 text-white font-bold py-1 px-3 rounded"
+                            onClick={() => decreaseQty(item.id)}
+                          >
+                            -
+                          </button>
+                          <input
+                            type="number"
+                            name="qty"
+                            value={item.quantity}
+                            readOnly
+                            className="w-16 text-center border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
+                          />
+                          <button
+                            className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded"
+                            onClick={() => increaseQty(item.id)}
+                          >
+                            +
+                          </button>
+                          <button
+                            className="ml-4 bg-red-600 hover:bg-red-700 text-white p-2 rounded"
+                            onClick={() => removeCartHandler(item.id, item.name)}
+                            aria-label={`Remove ${item.name} from cart`}
+                          >
+                            <i className="fa fa-trash" aria-hidden="true"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                    <hr className="border-gray-300" />
+                  </Fragment>
+                ))}
             </div>
+
+            {/* Cart Summary */}
+            <div className="w-full md:w-1/3 mt-6 md:mt-0 px-4">
+              <div className="shadow-lg p-6 rounded-lg bg-white ">
+                <h5 className="text-xl font-semibold mb-4">Cart Summary</h5>
+                <hr className="mb-4 border-gray-300" />
+                <p className="mb-2">
+                  <b>Units:</b>{' '}
+                  {products.reduce((acc, item) => acc + Number(item.quantity), 0)}
+                </p>
+                <p className="mb-4">
+                  <b>Total:</b>{' '}
+                  Rs.
+                  {products.reduce(
+                    (acc, item) => acc + item.quantity * item.price,
+                    0
+                  )}
+                </p>
+                <button
+                  className="w-full bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold py-3 rounded transition-colors duration-200"
+                  onClick={shippingHandler}
+                >
+                  CheckOut
+                </button>
+              </div>
+            </div>
+          </>
+        )}
+      </div>
+    </div>
 
         </>
   )
