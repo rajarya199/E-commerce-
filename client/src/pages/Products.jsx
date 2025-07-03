@@ -16,22 +16,27 @@ const Products = () => {
   }, [])
   return (
     <>
-        <div className="contaner-fluid">
-            <div className="row d-flex justify-content-evenly">
-                <div className="col-md-3">
-                    <Sidebar/>
-                </div>
-                <div className="col-md-8">
-                     <div className="container-fluid mt-5">
-              <div className="row row-cols-1 row-cols-md-3 g-4">
-                {products && products.map((product, i) => (
-                  <Card key={i} data={product} />
-                ))}
-              </div>
-            </div>
-                </div>
-            </div>
+      <div className="w-full">
+  <div className="flex flex-wrap justify-evenly">
+    {/* Sidebar */}
+    <div className="w-full md:w-1/4 px-4">
+      <Sidebar />
+    </div>
+
+    {/* Main content */}
+    <div className="w-full md:w-3/4 px-4 mt-5">
+      <div className="w-full">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {products &&
+            products.map((product, i) => (
+              <Card key={i} data={product} />
+            ))}
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
     </>
   )
 }
