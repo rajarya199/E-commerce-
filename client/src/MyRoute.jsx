@@ -17,6 +17,7 @@ import AddCategory from './admin/AddCategory';
 import Category from './admin/Category';
 import AddProduct from './admin/AddProduct'
 import Product from './admin/Product';
+import ProductDetails from "./pages/ProductDetails";
 
 const MyRoute = () => {
   return (
@@ -25,6 +26,7 @@ const MyRoute = () => {
     <Routes>
     <Route path='/' element={<Layout/>}>
       <Route index element={<Homepage/>} />
+      <Route path='productdetails/:productId' element={<ProductDetails/>}/>
       <Route path='signup' element={<Register/>}/>
       <Route path='signin' element={<Login/>}/>
       <Route path='cart' element={<Cart/>}/>
