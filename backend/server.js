@@ -9,6 +9,7 @@ const orderRoute=require('./routes/orderRoute')
 
 const categoryRoute=require('./routes/categoryRoute')
 const productRoute=require('./routes/productRoute')
+const paymentRoute=require('./routes/paymentRoute')
 const cors=require('cors')
 //middleware
 app.use(morgan('dev'))
@@ -21,6 +22,7 @@ app.use('/api',categoryRoute)
 app.use('/api',userRoute)
 app.use('/api',productRoute)
 app.use('/api',orderRoute)
+app.use('/api',paymentRoute)
 
 
 const port=process.env.PORT || 5000
