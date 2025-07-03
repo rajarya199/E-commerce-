@@ -16,7 +16,7 @@ const Products = () => {
   }, [])
   return (
     <>
-      <div className="w-full">
+      <div className="w-full ">
   <div className="flex flex-wrap justify-evenly">
     {/* Sidebar */}
     <div className="w-full md:w-1/4 px-4">

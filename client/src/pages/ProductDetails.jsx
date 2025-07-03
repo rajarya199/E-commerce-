@@ -44,21 +44,32 @@ const ProductDetails = () => {
     <>
 
 <ToastContainer theme='colored' position='top-center'/>
-    <div className='container shadow p-5 my-5'>
-        <div className='row d-flex justify-content-between'>
-            <div className='col-md-5'>
-                <img src={`${IMG_URL}/${product.product_image}`} alt={product.product_name} className='img-fluid'/>
-            </div>
-            <div className='col-md-6'>
-                <h5>{product.product_name}</h5>
-                <h5>Rs.{product.product_price}</h5>
-                <p>{product.product_description}</p>
-                <br/>
-                <br/>
-                <button className='btn btn-success' onClick={addToCart}>Add to Cart</button>
-            </div>
-        </div>
+  <div className="container mx-auto shadow-lg p-5 my-10">
+  <div className="flex flex-wrap justify-between">
+    <div className="w-full md:w-5/12 mb-6 md:mb-0">
+      <img
+        src={`${IMG_URL}/${product.product_image}`}
+        alt={product.product_name}
+        className="w-full h-auto object-cover rounded"
+      />
     </div>
+
+    {/* Product Details */}
+    <div className="w-full md:w-6/12">
+      <h5 className="text-2xl font-semibold mb-3 text-white">{product.product_name}</h5>
+      <h5 className="text-xl text-gray-300 mb-4">Rs.{product.product_price}</h5>
+      <p className="text-gray-300 mb-8">{product.product_description}</p>
+
+      <button
+        className="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-6 rounded transition-colors duration-200"
+        onClick={addToCart}
+      >
+        Add to Cart
+      </button>
+    </div>
+  </div>
+</div>
+
     </>
   )
 }
