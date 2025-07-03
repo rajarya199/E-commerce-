@@ -189,7 +189,7 @@ import {
             </div>
             {/* Cart */}
             <div className="relative">
-              <button
+              <Link to="/cart"
                 className="text-amber-200/80 hover:text-amber-100 transition-colors"
                 aria-label="Shopping cart"
               >
@@ -198,7 +198,7 @@ import {
                     {cartCount}
 
                 </span>
-              </button>
+              </Link>
             </div>
           </div>
           {/* Mobile menu button */}
