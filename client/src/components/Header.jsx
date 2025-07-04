@@ -51,7 +51,7 @@ import {
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center">
             <div className="text-amber-500 font-serif text-2xl tracking-tighter">
-              VINTAGE
+              EVEREST
               <span className="text-amber-200 text-sm ml-1 tracking-widest">
                 EMPORIUM
               </span>

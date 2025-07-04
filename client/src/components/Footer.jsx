@@ -16,14 +16,14 @@ import {
           {/* Brand Column */}
           <div className="space-y-4">
             <div className="text-amber-500 font-serif text-2xl tracking-tighter">
-              VINTAGE
+              EVEREST
               <span className="text-amber-200 text-sm ml-1 tracking-widest">
                 EMPORIUM
               </span>
             </div>
             <p className="text-amber-200/70 text-sm">
-              Curating timeless treasures for the discerning collector. Each
-              piece tells a story of craftsmanship and heritage.
+               Your one-stop online destination for quality products at unbeatable prices. Discover trends, shop essentials, and enjoy seamless delivery.
+
             </p>
             <div className="flex space-x-4 pt-2">
               <a
@@ -117,7 +117,7 @@ import {
                   className="text-amber-500 mr-2 mt-0.5 flex-shrink-0"
                 />
                 <span className="text-amber-200/70 text-sm">
-                  123 Antique Row, Vintage Valley, CA 90210
+                  Satdobato,Lalitpur-15,Nepal
                 </span>
               </li>
               <li className="flex items-center">
@@ -135,7 +135,7 @@ import {
                   className="text-amber-500 mr-2 flex-shrink-0"
                 />
                 <span className="text-amber-200/70 text-sm">
-                  info@vintageemporium.com
+                  info@everestemporium.com
                 </span>
               </li>
             </ul>
@@ -170,7 +170,7 @@ import {
         {/* Bottom Section */}
         <div className="border-t border-amber-900/30 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center">
           <div className="text-amber-200/50 text-xs mb-4 md:mb-0">
-            © {new Date().getFullYear()} Vintage Emporium. All rights reserved.
+            © {new Date().getFullYear()} Everest Emporium. All rights reserved.
           </div>
           <div className="flex space-x-6">
             <a
