@@ -2,7 +2,7 @@ import React from 'react'
 import { ShoppingCartIcon } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { IMG_URL } from '../config'
-const Card = (props) => {
+const ProductsCard = (props) => {
   const { _id, product_name, product_price, product_image,product_description } = props.data
 
   return (
@@ -15,7 +15,14 @@ const Card = (props) => {
           className="w-full h-full object-cover object-center transition-transform duration-700 filter brightness-90 sepia-[0.15] group-hover:scale-105 group-hover:brightness-100"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-        
+        {/* Quick add button */}
+        <button
+          className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-amber-800 hover:bg-amber-700 text-amber-100 px-4 py-2 flex items-center space-x-2 transform translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 border-b-2 border-amber-600"
+          aria-label="Add to cart"
+        >
+          <ShoppingCartIcon size={16} />
+          <span>Add to Cart</span>
+        </button>
       </div>
       {/* Product info */}
       <div className="p-4">
@@ -41,4 +48,4 @@ const Card = (props) => {
   )
 }
 
-export default Card
+export default ProductsCard
