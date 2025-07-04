@@ -3,6 +3,7 @@ import Card from '../components/Card'
 import Sidebar from '../components/Sidebar'
 import axios from 'axios'
 import { API } from '../config'
+import ProductsCard from '../components/ProductsCard'
 
 const Products = () => {
      const[products,setProducts]=useState([])
@@ -29,7 +30,7 @@ const Products = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {products &&
             products.map((product, i) => (
-              <Card key={i} data={product} />
+              <ProductsCard key={i} data={product} />
             ))}
         </div>
       </div>
