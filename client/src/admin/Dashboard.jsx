@@ -6,159 +6,84 @@ const Dashboard = () => {
     const {user}=isAuthenticated()
   return (
     <>
-  
-         
-        <div className="container-fluid">
-    <h2 className="text-center my-3 text-muted">
-      Admin Dashboard
-    </h2>
-    <div className="row d-flex">
-      <div className="col-md-6 col-xl-4 mb-4">
-        <Link to="#" className="text-decoration-none">
-          <div className="card shadow border-0 py-2">
-            <div className="card-body">
-              <div className="row align-items-center no-gutters">
-                <div className="col me-2">
-                  <div className="text-uppercase text-primary fw-bold text-xs mb-1 text-center">
-                    <span>
-                      Total Orders
-                    </span>
-                  </div>
-                  <div className="text-secondary fw-bold mb-0 text-center">
-                    <span>Delivered: 0</span>
-                  </div>
-                  <div className="col-auto text-center">
-                    <i className="fab fa-first-order-alt fa-spin fs-1 text-success"></i>
-                  </div>
-                </div>
+<div className="container mx-auto px-4">
+  <h2 className="text-center my-6 text-vntx-100 text-2xl font-semibold">Admin Dashboard</h2>
+  <div className="flex flex-wrap -mx-4">
+    {/* Card Template */}
+    {[
+      {
+        title: 'Total Orders',
+        subtitle: 'Delivered: 0',
+        icon: (
+          <i className="fab fa-first-order-alt fa-spin text-green-600 text-5xl"></i>
+        ),
+        bgColor: 'bg-white',
+        textColorTitle: 'text-blue-600',
+        textColorSubtitle: 'text-gray-600',
+      },
+      {
+        title: 'Total Users',
+        subtitle: 'Deactivated: 0',
+        icon: <i className="fas fa-users text-green-600 text-5xl"></i>,
+        bgColor: 'bg-yellow-400',
+        textColorTitle: 'text-white',
+        textColorSubtitle: 'text-gray-200',
+      },
+      {
+        title: 'Total Products',
+        subtitle: 'Out of Stock: 0',
+        icon: (
+          <i className="fas fa-globe fa-spin text-white text-5xl"></i>
+        ),
+        bgColor: 'bg-green-600',
+        textColorTitle: 'text-white',
+        textColorSubtitle: 'text-yellow-400',
+      },
+      {
+        title: 'Total Sales',
+        subtitle: 'Booking: 0',
+        icon: <i className="fas fa-globe text-white text-5xl"></i>,
+        bgColor: 'bg-red-600',
+        textColorTitle: 'text-white',
+        textColorSubtitle: 'text-white',
+      },
+      {
+        title: 'Admins',
+        subtitle: 'Super Admin: 1',
+        icon: <i className="fas fa-users text-white text-5xl"></i>,
+        bgColor: 'bg-blue-700',
+        textColorTitle: 'text-white',
+        textColorSubtitle: 'text-white',
+      },
+      {
+        title: 'Categories',
+        subtitle: 'Sub-Categories: 0',
+        icon: <i className="fas fa-globe text-white text-5xl"></i>,
+        bgColor: 'bg-gray-800',
+        textColorTitle: 'text-white',
+        textColorSubtitle: 'text-white',
+      },
+    ].map(({ title, subtitle, icon, bgColor, textColorTitle, textColorSubtitle }, idx) => (
+      <div key={idx} className="w-full sm:w-1/2 xl:w-1/3 p-4">
+        <Link to="#" className="no-underline">
+          <div className={`shadow-lg border-0 py-4 rounded-lg ${bgColor}`}>
+            <div className="flex flex-col items-center">
+              <div className={`uppercase font-bold text-xs mb-2 text-center ${textColorTitle}`}>
+                {title}
+              </div>
+              <div className={`font-semibold mb-4 text-center ${textColorSubtitle}`}>
+                {subtitle}
+              </div>
+              <div className="text-center">
+                {icon}
               </div>
             </div>
           </div>
         </Link>
       </div>
-
-      <div className="col-md-6 col-xl-4 mb-4">
-        <Link to="#" className="text-decoration-none">
-          <div className="card shadow border-0 py-2 bg-warning">
-            <div className="card-body">
-              <div className="row align-items-center no-gutters">
-                <div className="col me-2">
-                  <div className="text-uppercase text-light fw-bold text-xs mb-1 text-center">
-                    <span>
-                      Total Users
-                    </span>
-                  </div>
-                  <div className="text-secondary fw-bold mb-0 text-center">
-                    <span>Deactivated: 0</span>
-                  </div>
-                  <div className="col-auto text-center">
-                    <i className="fas fa-users fs-1 text-success"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </Link>
-      </div>
-
-      <div className="col-md-6 col-xl-4 mb-4">
-        <Link to="#" className="text-decoration-none">
-          <div className="card shadow border-0 py-2 bg-success">
-            <div className="card-body">
-              <div className="row align-items-center no-gutters">
-                <div className="col me-2">
-                  <div className="text-uppercase text-light fw-bold text-xs mb-1 text-center">
-                    <span>
-                      Total Products
-                    </span>
-                  </div>
-                  <div className="text-warning fw-bold mb-0 text-center">
-                    <span>Out of Stock: 0</span>
-                  </div>
-                  <div className="col-auto text-center">
-                    <i className="fas fa-globe fs-1 text-light fa-spin"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </Link>
-      </div>
-
-      <div className="col-md-6 col-xl-4 mb-4">
-        <Link to="#" className="text-decoration-none">
-          <div className="card shadow border-0 py-2 bg-danger">
-            <div className="card-body">
-              <div className="row align-items-center no-gutters">
-                <div className="col me-2">
-                  <div className="text-uppercase text-light fw-bold text-xs mb-1 text-center">
-                    <span>
-                      Total Sales
-                    </span>
-                  </div>
-                  <div className="text-white fw-bold mb-0 text-center">
-                    <span>Booking: 0</span>
-                  </div>
-                  <div className="col-auto text-center">
-                    <i className="fas fa-globe fs-1 text-white"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </Link>
-      </div>
-
-      <div className="col-md-6 col-xl-4 mb-4">
-        <Link to="#" className="text-decoration-none">
-          <div className="card shadow border-0 py-2 bg-primary">
-            <div className="card-body">
-              <div className="row align-items-center no-gutters">
-                <div className="col me-2">
-                  <div className="text-uppercase text-light fw-bold text-xs mb-1 text-center">
-                    <span>
-                      Admins
-                    </span>
-                  </div>
-                  <div className="text-white fw-bold mb-0 text-center">
-                    <span>Super Admin: 1</span>
-                  </div>
-                  <div className="col-auto text-center">
-                    <i className="fas fa-users fs-1 text-white"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </Link>
-      </div>
-
-      <div className="col-md-6 col-xl-4 mb-4">
-        <Link to="#" className="text-decoration-none">
-          <div className="card shadow border-0 py-2 bg-dark">
-            <div className="card-body">
-              <div className="row align-items-center no-gutters">
-                <div className="col me-2">
-                  <div className="text-uppercase text-light fw-bold text-xs mb-1 text-center">
-                    <span>
-                     Categories
-                    </span>
-                  </div>
-                  <div className="text-white fw-bold mb-0 text-center">
-                    <span>Sub-Categories: 0</span>
-                  </div>
-                  <div className="col-auto text-center">
-                    <i className="fas fa-globe fs-1 text-white"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </Link>
-      </div>
-
-    </div>
-  </div> 
+    ))}
+  </div>
+</div>
     </>
   )
 }
