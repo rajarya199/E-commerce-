@@ -31,45 +31,61 @@ const AddCategory = () => {
           }
       })
   }
-  //to show error msg 
-  const showError=()=>(
-      <div className='alert alert-danger' style={{display:error ? '':'none'}}>
-          {error}
-      </div>
-  )
+  //to show error msg style={{display:error ? '':'none'}} 
+const showError = () => (
+  <div
+  style={{display:error ? '':'none'}}
+    className={`bg-red-800 border border-red-500 text-red-100 px-4 py-3 rounded mb-4 shadow-md transition-opacity duration-300 `}
+    role="alert"
+  >
+    {error}
+  </div>
+);
 
-  // to show success msg
-  const showSuccess=()=>(
-      <div className='alert alert-success' style={{display:success ? '':'none'}}>
-        new category added
-      </div>
-  )
+const showSuccess = () => (
+  <div
+  style={{display:success ? '':'none'}}
+    className={`bg-amber-700 border border-amber-500 text-amber-100 px-4 py-3 rounded mb-4 shadow-md transition-opacity duration-300 ` }
+    role="alert"
+  >
+    New category added
+  </div>
+);
+
 return (
   <>
-   <div className='container'>
-              <div className='row d-flex justify-content-center'>
-                  <div className='col-md-6'>
-                      <form className='shadow p-3'>
-                          <h3 className='text-center text-muted'>Add Category</h3>
-                          {showError()}
-                          {showSuccess()}
-                          <div className='mb-2'>
-                              <label htmlFor='category'>Category Name</label>
-                              <input type='text' id='category' className='form-control'
-                              onChange={handleChange} value={category_name}
-                               />
-                          </div>
-                          <div className='mb-2'>
-                              <button className='btn btn-primary'
-                              onClick={handleSubmit}
-                              >
-                                  Add
-                              </button>
-                          </div>
-                      </form>
-                  </div>
-              </div>
-          </div>
+  <div className="max-w-md mx-auto my-8 px-4">
+  <form className="shadow-lg p-6 rounded-lg bg-vnbg-100 border border-vnbrd-100" onSubmit={handleSubmit}>
+    <h3 className="text-center text-vntx-100 text-2xl font-semibold mb-6">Add Category</h3>
+
+    {showError()}
+    {showSuccess()}
+
+    <div className="mb-4">
+      <label htmlFor="category" className="block mb-2 text-vntx-200 font-medium">
+        Category Name
+      </label>
+      <input
+        type="text"
+        id="category"
+        className="w-full px-4 py-2 rounded border border-vnbrd-100 bg-vninp-100 text-vntx-400 placeholder-vninpl-100 focus:outline-none focus:ring-2 focus:ring-vntx-200"
+        onChange={handleChange}
+        value={category_name}
+        placeholder="Enter category name"
+      />
+    </div>
+
+    <div className="mb-2">
+      <button
+        type="submit"
+        className="w-full bg-vnbtn-100 hover:bg-vnbtn-200 text-vnbg-100 font-semibold py-2 rounded transition-colors duration-200"
+      >
+        Add
+      </button>
+    </div>
+  </form>
+</div>
+
   
   </>
 )
