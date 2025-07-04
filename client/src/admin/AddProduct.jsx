@@ -69,104 +69,162 @@ const AddProduct = () => {
       setSuccess(false);
     }
   };
-  const showError = () => (
-    <div
-      className="alert alert-danger"
-      style={{ display: error ? "" : "none" }}
-    >
-      {error}
-    </div>
-  );
+ const showError = () => (
+  <div
+  style={{display:error ? '':'none'}}
+    className={`bg-red-800 border border-red-500 text-red-100 px-4 py-3 rounded mb-4 shadow-md transition-opacity duration-300 `}
+    role="alert"
+  >
+    {error}
+  </div>
+);
 
-  const showSuccess = () => (
-    <div
-      className="alert alert-success"
-      style={{ display: success ? "" : "none" }}
-    >
-      new product added
-    </div>
-  );
+const showSuccess = () => (
+  <div
+  style={{display:success ? '':'none'}}
+    className={`bg-amber-700 border border-amber-500 text-amber-100 px-4 py-3 rounded mb-4 shadow-md transition-opacity duration-300 ` }
+    role="alert"
+  >
+    New Product added
+  </div>
+);
   return (
     <>
-      <div className="container">
-        <div className="row d-flex justify-content-center">
-          <div className="col-md-6">
-            <form className="shadow p-3">
-              <h3 className="text-center text-muted">Add Product</h3>
-              {showError()}
-              {showSuccess()}
-              <div className="mb-2">
-                <label htmlFor="pname">Product Name</label>
-                <input
-                  type="text"
-                  id="pname"
-                  className="form-control"
-                  onChange={handleChange("product_name")}
-                  value={product_name}
-                />
-              </div>
-              <div className="mb-2">
-                <label htmlFor="price">Price</label>
-                <input
-                  type="number"
-                  id="price"
-                  className="form-control"
-                  onChange={handleChange("product_price")}
-                  value={product_price}
-                />
-              </div>
-              <div className="mb-2">
-                <label htmlFor="qty">Stock Quantity</label>
-                <input
-                  type="number"
-                  id="qty"
-                  className="form-control"
-                  onChange={handleChange("countInStock")}
-                  value={countInStock}
-                />
-              </div>
-              <div className="mb-2">
-                <label htmlFor="desc">Product Description</label>
-                <textarea
-                  className="form-control"
-                  id="desc"
-                  onChange={handleChange("product_description")}
-                  value={product_description}
-                ></textarea>
-              </div>
-              <div className="mb-2">
-                <label htmlFor="image">Image</label>
-                <input
-                  type="file"
-                  id="image"
-                  className="form-control"
-                  accept="image/*"
-                  onChange={handleImageChange}
-                />
-              </div>
-              <div className="mb-2">
-                <label htmlFor="category">Category</label>
-                <select
-                  className="form-control"
-                  onChange={handleChange("category")}
-                >
-                  <option></option>
-                  {categories.map((c, i) => (
-                    <option key={i} value={c._id}>
-                      {c.category_name}
-                    </option>
-                  ))}
-                </select>
-              </div>
-              <div className="mb-2">
-                <button className="btn btn-primary" onClick={handleSubmit}>
-                  Add
-                </button>
-              </div>
-            </form>
-          </div>
+<div className="container mx-auto px-4">
+  <div className="flex justify-center">
+    <div className="w-full max-w-lg">
+      <form
+        className="shadow-lg p-6 rounded-lg bg-vnbg-100 border border-vnbrd-100"
+        onSubmit={handleSubmit}
+      >
+        <h3 className="text-center text-vntx-100 text-2xl font-semibold mb-6">
+          Add Product
+        </h3>
+        {showError()}
+        {showSuccess()}
+
+        <div className="mb-4">
+          <label
+            htmlFor="pname"
+            className="block mb-1 font-medium text-vntx-200"
+          >
+            Product Name
+          </label>
+          <input
+            type="text"
+            id="pname"
+            className="w-full px-3 py-2 border border-vnbrd-100 rounded bg-vninp-100 text-vntx-400 placeholder-vninpl-100 focus:outline-none focus:ring-2 focus:ring-vntx-200"
+            onChange={handleChange('product_name')}
+            value={product_name}
+            placeholder="Enter product name"
+          />
         </div>
-      </div>
+
+        <div className="mb-4">
+          <label
+            htmlFor="price"
+            className="block mb-1 font-medium text-vntx-200"
+          >
+            Price
+          </label>
+          <input
+            type="number"
+            id="price"
+            className="w-full px-3 py-2 border border-vnbrd-100 rounded bg-vninp-100 text-vntx-400 placeholder-vninpl-100 focus:outline-none focus:ring-2 focus:ring-vntx-200"
+            onChange={handleChange('product_price')}
+            value={product_price}
+            placeholder="Enter price"
+          />
+        </div>
+
+        <div className="mb-4">
+          <label
+            htmlFor="qty"
+            className="block mb-1 font-medium text-vntx-200"
+          >
+            Stock Quantity
+          </label>
+          <input
+            type="number"
+            id="qty"
+            className="w-full px-3 py-2 border border-vnbrd-100 rounded bg-vninp-100 text-vntx-400 placeholder-vninpl-100 focus:outline-none focus:ring-2 focus:ring-vntx-200"
+            onChange={handleChange('countInStock')}
+            value={countInStock}
+            placeholder="Enter stock quantity"
+          />
+        </div>
+
+        <div className="mb-4">
+          <label
+            htmlFor="desc"
+            className="block mb-1 font-medium text-vntx-200"
+          >
+            Product Description
+          </label>
+          <textarea
+            id="desc"
+            className="w-full px-3 py-2 border border-vnbrd-100 rounded bg-vninp-100 text-vntx-400 placeholder-vninpl-100 focus:outline-none focus:ring-2 focus:ring-vntx-200"
+            onChange={handleChange('product_description')}
+            value={product_description}
+            placeholder="Enter product description"
+          ></textarea>
+        </div>
+
+        <div className="mb-4">
+          <label
+            htmlFor="image"
+            className="block mb-1 font-medium text-vntx-200"
+          >
+            Image
+          </label>
+          <input
+            type="file"
+            id="image"
+            accept="image/*"
+            className="w-full text-vntx-400"
+            onChange={handleImageChange}
+          />
+        </div>
+
+        <div className="mb-6">
+          <label
+            htmlFor="category"
+            className="block mb-1 font-medium text-vntx-200"
+          >
+            Category
+          </label>
+         <select
+  id="category"
+  className="w-full px-3 py-2 border border-vnbrd-100 rounded bg-vninp-100 text-vntx-400 focus:outline-none focus:ring-2 focus:ring-vntx-200"
+  onChange={handleChange('category')}
+  value={productData.category || ''}
+>
+  <option value="" className="text-vninpl-100">
+    Select a category
+  </option>
+  {categories.map((c, i) => (
+    <option key={i} value={c._id}>
+      {c.category_name}
+    </option>
+  ))}
+</select>
+
+        </div>
+
+        <div>
+          <button
+            type="submit"
+            className="w-full bg-vnbtn-100 hover:bg-vnbtn-200 text-vnbg-100 font-semibold py-2 rounded transition-colors duration-200"
+          >
+            Add
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
     </>
   );
 };

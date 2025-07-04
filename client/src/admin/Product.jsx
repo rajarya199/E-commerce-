@@ -40,43 +40,79 @@ const Product = () => {
   return (
     <>
     <ToastContainer theme='colored' position='top-center'/>
-     <div class='container'>
-                <div class="row d-flex justify-content-center">
-                    <div class="col-md-10 shadow">
-                        <table class="table table-striped">
-                            <thead>
-                                    <tr>
-                                    <th scope="col">Product Name</th>
-                                    <th scope="col">Price</th>
-                                    <th scope="col">Stock Quantity</th>
-                                    <th scope="col">Product Description</th>
-                                    <th scope="col">Image</th>
-                                    <th scope="col">Category</th>
-                                    <th scope="col">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            {products && products.map((p,i)=>(
-                                <tr key={i}>
-                                    <td>{p.product_name}</td>
-                                    <td>{p.product_price}</td>
-                                    <td>{p.countInStock}</td>
-                                    <td>{p.product_description}</td>
-                                    <td><img src={`${IMG_URL}/${p.product_image}`} width='100' alt={p.product_name}/></td>
-                                    <td>{p.category.category_name}</td>
-                                    <td>  
-                                        <Link className='btn btn-primary' to={`/admin/updateproduct/${p._id}`}><FaEdit/></Link> <br/><br/>  
-                                        <button className='btn btn-danger'
-                                        onClick={()=>deleteProduct(p._id)}
-                                        ><FaTrash/></button>
-                                    </td>
-                                </tr>
-                                  ))}
-                                </tbody>
-                                </table>
-                            </div>
-                    </div>
-                </div>
+
+
+<div className="container mx-auto px-4">
+  <div className="flex justify-center">
+    <div className="w-full max-w-7xl shadow-lg rounded-lg overflow-x-auto bg-vnbg-100 border border-vnbrd-100">
+      <table className="min-w-full table-auto border-collapse border border-vnbrd-100 text-vntx-400">
+        <thead className="bg-vninpl-100">
+          <tr>
+            {[
+              'Product Name',
+              'Price',
+              'Stock Quantity',
+              'Product Description',
+              'Image',
+              'Category',
+              'Action',
+            ].map((header) => (
+              <th
+                key={header}
+                className="border border-vnbrd-100 px-4 py-2 text-left font-semibold text-vninp-100"
+              >
+                {header}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {products &&
+            products.map((p, i) => (
+              <tr
+                key={p._id}
+                className={i % 2 === 0 ? 'bg-vnbg-100' : 'bg-vninp-100'}
+              >
+                <td className="border border-vnbrd-100 px-4 py-2">{p.product_name}</td>
+                <td className="border border-vnbrd-100 px-4 py-2">Rs. {p.product_price}</td>
+                <td className="border border-vnbrd-100 px-4 py-2">{p.countInStock}</td>
+                <td className="border border-vnbrd-100 px-4 py-2">{p.product_description}</td>
+                <td className="border border-vnbrd-100 px-4 py-2">
+                  <img
+                    src={`${IMG_URL}/${p.product_image}`}
+                    alt={p.product_name}
+                    className="w-24 h-auto object-cover rounded"
+                  />
+                </td>
+                <td className="border border-vnbrd-100 px-4 py-2">
+                    {p.category?.category_name || 'No category'}
+
+                </td>
+                <td className="border border-vnbrd-100 px-4 py-2 gap-2 flex justify-center">
+                  <Link
+                    to={`/admin/updateproduct/${p._id}`}
+                    className="inline-block bg-vntx-200 hover:bg-vntx-100 text-vnbg-100 p-2 rounded transition-colors duration-200"
+                    aria-label={`Edit ${p.product_name}`}
+                  >
+                    <FaEdit />
+                  </Link>
+                  <button
+                    onClick={() => deleteProduct(p._id)}
+                    className="inline-block bg-red-700 hover:bg-red-800 text-vntx-400 p-2 rounded transition-colors duration-200"
+                    aria-label={`Delete ${p.product_name}`}
+                  >
+                    <FaTrash />
+                  </button>
+                </td>
+              </tr>
+            ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
     </>
   )
 }

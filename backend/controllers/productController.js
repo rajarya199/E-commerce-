@@ -19,11 +19,12 @@ exports.postProduct=async(req,res)=>{
 
 //to show all the products
 exports.productList=async(req,res)=>{
-    const product=await Product.find()
-    if(!product){
+    const products = await Product.find().populate('category', 'category_name');
+
+    if(!products){
         return res.status(400).json({error:'something went wrong'})
      }
-      res.send(product)
+      res.send(products)
 }
 
 exports.productDetails=async(req,res)=>{
