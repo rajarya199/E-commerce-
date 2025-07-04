@@ -231,7 +231,7 @@ exports.signOut=(req,res)=>{
 //require signin
 
 exports.requireSignin=expressjwt({
-  secret:process.env.Jwt_SECRET,
+  secret:process.env.JWT_SECRET,
   algorithms:['HS256'],
   userProperty:'auth'
 })
@@ -240,7 +240,7 @@ exports.requireSignin=expressjwt({
 exports.requireUser=(req,res,next)=>{
   //verify jwt
    expressjwt({
-    secret:process.env.Jwt_SECRET,
+    secret:process.env.JWT_SECRET,
   algorithms:['HS256'],
   userProperty:'auth'
    })(req,res,(err)=>{
@@ -262,7 +262,7 @@ exports.requireUser=(req,res,next)=>{
 exports.requireAdmin=(req,res,next)=>{
   //verify jwt
    expressjwt({
-    secret:process.env.Jwt_SECRET,
+    secret:process.env.JWT_SECRET,
   algorithms:['HS256'],
   userProperty:'auth'
    })(req,res,(err)=>{
