@@ -31,18 +31,26 @@ useEffect(()=>{
 
 
  //to show error msg 
- const showError=()=>(
-    <div className='alert alert-danger' style={{display:error ? '':'none'}}>
-        {error}
-    </div>
-)
+const showError = () => (
+  <div
+    className="bg-red-700 border border-red-500 text-red-100 text-sm font-medium rounded px-4 py-2 m-2 shadow-md"
+    style={{ display: error ? 'block' : 'none' }}
+    role="alert"
+  >
+    {error}
+  </div>
+);
 
-// to show success msg
-const showSuccess=()=>(
-    <div className='alert alert-success' style={{display:success ? '':'none'}}>
-       Your account has been verified,login to continue
-    </div>
-)
+const showSuccess = () => (
+  <div
+    className="bg-amber-700 border border-amber-500 text-amber-100 text-sm font-medium rounded px-4 py-2 m-2 shadow-md"
+    style={{ display: success ? 'block' : 'none' }}
+    role="alert"
+  >
+    Your account has been verified, login to continue
+  </div>
+);
+
   return (
     <>
          {showError()}

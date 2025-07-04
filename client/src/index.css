@@ -3,3 +3,17 @@ body{
     background-color:  #121212;
     
 }
+
+@theme{
+    --color-vnbg-100:#3E2C23;
+    --color-vnbrd-100:#7A5C40;
+    --color-vntx-100:#D9B382;
+    --color-vntx-200:#C4A76A;
+    --color-vntx-300:#BFAE8A;
+    --color-vntx-400:#E6D3B3;
+    --color-vninp-100:#5A4535;
+    --color-vninpl-100:#BFAE8A;
+    --color-vnbtn-100:#D9B382;
+    --color-vnbtn-200:#C4A76A;
+
+}

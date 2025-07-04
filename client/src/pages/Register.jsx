@@ -52,57 +52,118 @@ const Register = () => {
   const showError=()=>(
       //if error display error
      error && 
-     <div className="alert alert-danger">
-      {error}
-     </div>
+    <div className="bg-vntx-300 border border-vnbrd-100 text-vnbrd-100 px-4 py-3 rounded" role="alert">
+  {error}
+</div>
   )
 
   // to show success msg
   const showSuccess=()=>(
       success &&
-      <div className='alert alert-success'>
-         New account created, verify your account before login
-      </div>
+    <div
+  className="bg-vntx-300 border border-vnbrd-100 text-vnbrd-100 px-4 py-3 rounded"
+  role="alert"
+>
+  New account created, verify your account before login
+</div>
   )
   
 
 return (
   <>
-  <div className="d-flex justify-content-center">
-      <div className="col-lg-5 my-4">
-          <form className="p-3 shadow-lg">
-              <h2 className="text-center text-success my-2">
-                  Register Form
-              </h2>
-              {showError()}
-              {showSuccess()}
-              <div className="mb-3">
-                  <label htmlFor="fname">FullName</label>
-                  <input type="text" id="fname" className="form-control" 
-                  onChange={handleChange('name')} value={name}
-                  />
-              </div>
-              <div className="mb-3">
-                  <label htmlFor="email">Email</label>
-                  <input type="email" id="email" className="form-control"
-                   onChange={handleChange('email')} value={email}/>
-              </div>
-              <div className="mb-3">
-                  <label htmlFor="pass">Password</label>
-                  <input type="password" id="pass" className="form-control"
-                   onChange={handleChange('password')} value={password}
-                  />
-              </div>
-              <div className="mb-3">
-                  <label htmlFor="cpass">Confirm Password</label>
-                  <input type="password" id="cpass" onChange={handleChange('cpassword')} value={cpassword} className="form-control"/>
-              </div>
-              <div className="mb-3">
-                  <button type="submit" className="btn btn-primary" onClick={handleSubmit}>Register</button>
-              </div>
-          </form>
+<div className="flex justify-center">
+  <div className="w-full max-w-lg my-8">
+    <form
+      className="p-6 shadow-lg rounded-lg bg-vnbg-100 border border-vnbrd-100"
+      onSubmit={handleSubmit}
+    >
+      <h2 className="text-center my-4 text-2xl font-semibold text-vntx-100">
+        Register Form
+      </h2>
+      {showError()}
+      {showSuccess()}
+
+      <div className="mb-5">
+        <label
+          htmlFor="fname"
+          className="block mb-2 font-medium text-vntx-200"
+        >
+          FullName
+        </label>
+        <input
+          type="text"
+          id="fname"
+          className="w-full px-4 py-2 border border-vnbrd-100 rounded bg-vninp-100 text-vntx-400 placeholder-vninpl-100 focus:outline-none focus:ring-2 focus:ring-vntx-200"
+          onChange={handleChange("name")}
+          value={name}
+          placeholder="Enter your full name"
+        />
       </div>
+
+      <div className="mb-5">
+        <label
+          htmlFor="email"
+          className="block mb-2 font-medium text-vntx-200"
+        >
+          Email
+        </label>
+        <input
+          type="email"
+          id="email"
+          className="w-full px-4 py-2 border border-vnbrd-100 rounded bg-vninp-100 text-vntx-400 placeholder-vninpl-100 focus:outline-none focus:ring-2 focus:ring-vntx-200"
+          onChange={handleChange("email")}
+          value={email}
+          placeholder="your.email@example.com"
+        />
+      </div>
+
+      <div className="mb-5">
+        <label
+          htmlFor="pass"
+          className="block mb-2 font-medium text-vntx-200"
+        >
+          Password
+        </label>
+        <input
+          type="password"
+          id="pass"
+          className="w-full px-4 py-2 border border-vnbrd-100 rounded bg-vninp-100 text-vntx-400 placeholder-vninpl-100 focus:outline-none focus:ring-2 focus:ring-vntx-200"
+          onChange={handleChange("password")}
+          value={password}
+          placeholder="Enter your password"
+        />
+      </div>
+
+      <div className="mb-5">
+        <label
+          htmlFor="cpass"
+          className="block mb-2 font-medium text-vntx-200"
+        >
+          Confirm Password
+        </label>
+        <input
+          type="password"
+          id="cpass"
+          className="w-full px-4 py-2 border border-vnbrd-100 rounded bg-vninp-100 text-vntx-400 placeholder-vninpl-100 focus:outline-none focus:ring-2 focus:ring-vntx-200"
+          onChange={handleChange("cpassword")}
+          value={cpassword}
+          placeholder="Confirm your password"
+        />
+      </div>
+
+      <div className="mb-3">
+        <button
+          type="submit"
+          className="w-full bg-vnbtn-100 hover:bg-vnbtn-200 text-vnbg-100 font-semibold py-2 rounded transition-colors duration-200"
+        >
+          Register
+        </button>
+      </div>
+    </form>
   </div>
+</div>
+
+
 
   </>
 )
