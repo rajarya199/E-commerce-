@@ -60,36 +60,36 @@ import {
           {/* Desktop Navigation */}
           <div className="hidden md:block">
             <div className="ml-10 flex items-center space-x-8">
-              <a
-                href="/"
+              <Link
+                to='/'
                 className="text-amber-200 hover:text-amber-100 transition-colors px-2 py-1 text-sm tracking-wider"
               >
                 HOME
-              </a>
-              <a
-                href="/"
+              </Link>
+              <Link
+              to='/'
                 className="text-amber-200 hover:text-amber-100 transition-colors px-2 py-1 text-sm tracking-wider"
               >
                 SHOP
-              </a>
-              <a
-                href="/products"
+              </Link>
+              <Link
+                to="/products"
                 className="text-amber-200 hover:text-amber-100 transition-colors px-2 py-1 text-sm tracking-wider"
               >
                 PRODUCTS
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                to="#"
                 className="text-amber-200 hover:text-amber-100 transition-colors px-2 py-1 text-sm tracking-wider"
               >
                 ABOUT
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                to='/'
                 className="text-amber-200 hover:text-amber-100 transition-colors px-2 py-1 text-sm tracking-wider"
               >
                 CONTACT
-              </a>
+              </Link>
             </div>
           </div>
           {/* Desktop Right Section */}
@@ -255,8 +255,8 @@ import {
             <Link to="/" className="block px-3 py-2 text-amber-200 hover:bg-amber-900/30">HOME</Link>
             <Link to="/" className="block px-3 py-2 text-amber-200 hover:bg-amber-900/30">SHOP</Link>
             <Link to="/products" className="block px-3 py-2 text-amber-200 hover:bg-amber-900/30">PRODUCTS</Link>
-            <a href="#" className="block px-3 py-2 text-amber-200 hover:bg-amber-900/30">ABOUT</a>
-            <a href="#" className="block px-3 py-2 text-amber-200 hover:bg-amber-900/30">CONTACT</a>
+            <Link to='/' className="block px-3 py-2 text-amber-200 hover:bg-amber-900/30">ABOUT</Link>
+            <Link to="/" className="block px-3 py-2 text-amber-200 hover:bg-amber-900/30">CONTACT</Link>
 
             <div className="border-t border-amber-900/30 mt-2 pt-2">
               {isAuthenticated() ? (
